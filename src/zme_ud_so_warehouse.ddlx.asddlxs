@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+annotate view ZI_UD_SO_WAREHOUSE
+    with 
+{
+
+@UI.lineItem: [{ position: 10 , label: 'Warehouse'}]
+    Lgnum;
+    
+   // Matnr;
+   @UI.lineItem: [{ position: 20 , label: 'Plant'}] 
+    Werks;
+    @UI.lineItem: [{ position: 30 , label: 'Storage Location'}]
+    Lgort;
+    @UI.lineItem: [{ position: 40 , label: 'Available Quantity'}]
+    Kwmeng;   
+//    Vrkme;
+    @UI.lineItem: [{ position: 50 , label: 'Distance'}]
+    Distance;
+//    DistUom;
+    @UI.lineItem: [{ position: 60 , label: 'Warehouse Address'}]
+    WarehouseAddress;
+    
+}

@@ -1,0 +1,56 @@
+managed implementation in class zbp_i_ud_so_header unique;
+strict ( 2 );
+
+define behavior for ZI_UD_SO_HEADER //alias <alias_name>
+persistent table zud_so_header
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) Vbeln;
+  field ( readonly :update )  Name1, Lfsta, ShipToAddress ;
+  association _Item { create; }
+
+
+  mapping for ZUD_SO_HEADER
+  {
+
+      Vbeln = vbeln;
+      Name1 = name1;
+      Lfsta = lfsta;
+      ShipToAddress =ship_to_address;
+  }
+}
+
+define behavior for Zi_ud_so_Item //alias <alias_name>
+persistent table zud_so_item
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Vbeln, Posnr;
+  field ( readonly :update )  Matnr, Maktx, Kwmeng, Vrkme, Brgew, Gewei, Dimensions, VbelnDlv, Tknum;
+  association _Header;
+   mapping for ZUD_SO_ITEM
+  {
+
+      Vbeln = vbeln;
+      Posnr = posnr;
+      Matnr = matnr;
+      Maktx = maktx;
+      Kwmeng = kwmeng;
+      Vrkme = vrkme;
+      Lgnum = lgnum;
+      Brgew = brgew;
+    Gewei = gewei;
+    Dimensions =dimensions;
+    VbelnDlv =vbeln_dlv;
+    Tknum = tknum;
+
+  }
+}

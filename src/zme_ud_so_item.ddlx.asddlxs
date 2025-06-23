@@ -1,0 +1,66 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Item',
+        typeNamePlural: 'Item Details',
+        title: {  type: #STANDARD, value: 'Vbeln'  } },
+    presentationVariant: [{ sortOrder: [{ by: 'Vbeln', direction:
+    #ASC }] }]
+}
+annotate view ZC_UD_SO_ITEM
+    with 
+{
+@UI.facet: [
+//                     { id: 'Item',
+//                      purpose: #STANDARD,
+//                      type: #IDENTIFICATION_REFERENCE,
+//                      position: 10,
+//                      label: 'Sales Item Details'},
+                        { id: 'Warehouse',
+                           purpose: #STANDARD,
+                           type: #LINEITEM_REFERENCE,
+                           position: 10,
+                           label: 'Warehouse Details',
+                           targetElement: '_Warehouse'
+                          }            
+//                      
+                      ]
+                      
+ @UI.lineItem: [{ position: 10 , label: 'Sales Order'}]
+    Vbeln;
+     @UI.lineItem: [{ position: 20 , label: 'Item'}]
+//     @UI.identification: [{ position: 10 , label: 'Sales Document Item'}]
+    Posnr;
+     @UI.lineItem: [{ position: 30 , label: 'Material'}]
+//     @UI.identification: [{ position: 20, label: 'Material Number' }]
+    Matnr;
+     @UI.lineItem: [{ position: 40 , label: 'Material Description'}]
+    Maktx;
+     @UI.lineItem: [{ position: 50, label: 'Quantity' }]
+//      @UI.identification: [{ position: 30, label: 'Order Quantity' }]
+    Kwmeng;
+//    Vrkme;
+@Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZI_UD_SO_WAREHOUSE',
+      element: 'Lgnum'
+  },
+   additionalBinding: [{ element: 'Lgnum',
+                               localElement: 'Lgnum' },
+                             { element: 'Matnr',
+                             localElement: 'Matnr' }]
+   }]
+     @UI.lineItem: [{ position: 60, label: 'Warehouse' }]
+    Lgnum;
+      @UI.lineItem: [{ position: 70, label: 'Total Weight' }]
+    Brgew;
+//    Gewei;
+     @UI.lineItem: [{ position: 80, label: 'Dimensions' }]
+    Dimensions;
+     @UI.lineItem: [{ position: 90, label: 'Delivery Number' }]
+    VbelnDlv;
+    @UI.lineItem: [{ position: 100, label: 'Tracking Number' }]
+    Tknum;
+   
+    
+    
+}

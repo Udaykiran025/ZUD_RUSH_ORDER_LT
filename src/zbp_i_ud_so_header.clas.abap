@@ -1,0 +1,5 @@
+CLASS zbp_i_ud_so_header DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_ud_so_header.
+ENDCLASS.
+
+CLASS zbp_i_ud_so_header IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,47 @@
+@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        typeName: 'Sales',
+        typeNamePlural: 'Sales Header Details',
+        title: {  type: #STANDARD, value: 'Vbeln' }
+      },
+    presentationVariant: [{ sortOrder: [{ by: 'Vbeln', direction:
+    #ASC }] }]
+
+}
+@Search.searchable: true
+annotate view ZC_UD_SO_HEADER
+    with 
+{
+
+  @UI.facet: [{ id: 'Header',
+                      purpose: #STANDARD,
+                      type: #IDENTIFICATION_REFERENCE,
+                      position: 10,
+                      label: 'Sales Header Details'},
+                           { id: 'Item',
+                           purpose: #STANDARD,
+                           type: #LINEITEM_REFERENCE,
+                           position: 20,
+                           label: 'Item Details',
+                           targetElement: '_Item'
+                          }                        
+                         ]
+                         
+  @UI.lineItem: [{ position: 10 , label: 'Sales Order'}]
+  @UI.identification: [{ position: 10, label: 'Sales Order' }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Sales Order ID'
+  @Search.defaultSearchElement: true
+    Vbeln;
+    @UI.lineItem: [{ position: 20 , label: 'Customer'}]
+  @UI.identification: [{ position: 20, label: 'Customer' }]
+    Name1;
+    @UI.lineItem: [{ position: 30 , label: 'Delivery Status'}]
+  @UI.identification: [{ position: 30, label: 'Delivery Status' }]
+    Lfsta;
+  @UI.identification: [{ position: 40, label: 'Ship-to-Address' }]
+   ShipToAddress;
+    
+}

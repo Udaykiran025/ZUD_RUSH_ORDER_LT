@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_UD_SO_HEADER //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Item { create; }
+}
+
+define behavior for ZC_UD_SO_ITEM //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Header;
+}
